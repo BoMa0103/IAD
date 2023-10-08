@@ -21,41 +21,24 @@ df['volume_class'] = volume_class
 
 fig = plt.figure(figsize=(12, 6))
 vol = fig.add_subplot(121)
-high = fig.add_subplot(122)
+open = fig.add_subplot(122)
 vol.hist(df.Volume, bins=80)
 vol.set_xlabel('Volume')
 vol.set_title("Histogram of Volume")
-high.hist(df.High, bins=80)
-high.set_xlabel('High')
-high.set_title("Histogram of High")
-plt.show()
-
-sns.jointplot(x="High", y="Volume", data=df, kind='reg', fit_reg=True)
-plt.show()
-
-sns.stripplot(data=df, x="High", y="volume_class", hue="volume_class", legend=False)
+open.hist(df.Open, bins=80)
+open.set_xlabel('Open')
+open.set_title("Histogram of Open")
 plt.show()
 
 sns.displot(
     data=df,
-    x="High", hue="volume_class",
+    x="Open", hue="volume_class",
     kind="kde", height=6,
     multiple="fill", clip=(0, None),
     palette="ch:rot=-.25,hue=1,light=.75",
 )
 plt.show()
 
-sns.pairplot(df, hue="volume_class")
+sns.violinplot(x='Open', y='volume_class', data=df)
 plt.show()
 
-sns.violinplot(x='High', y='volume_class', data=df)
-plt.show()
-
-sns.pointplot(data=df, x="High", y="volume_class")
-plt.show()
-
-clarity_ranking = ["Avg_V", "High_V", "Low_V"]
-sns.boxenplot(x="High", y="volume_class",
-              color="b", order=clarity_ranking,
-              scale="linear", data=df)
-plt.show()

@@ -4,6 +4,9 @@
 import csv
 import datetime
 from random import randint
+import time
+
+timer = time.time()
 
 path_file = "TRX-USD.csv"
 
@@ -40,4 +43,7 @@ for num in range(3):
 
 print(f"Close avg: {average(close_arr):.{accuracy}}")
 print(f"Volume avg: {average(volume_arr):.{accuracy}}")
+
+print(f"Time working: {time.time() - timer}")
+
 

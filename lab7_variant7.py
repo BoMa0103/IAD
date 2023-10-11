@@ -1,9 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+import pandas as pd
 
 x = np.random.rand(3100)
 y = 2 * x + 1 + np.random.rand(3100)
+
+data = pd.DataFrame({'x': x, 'y': y})
+
+data.to_excel('data.xlsx', index=False)
 
 plt.scatter(x, y, label='Дані')
 plt.xlabel('Ознака x')
